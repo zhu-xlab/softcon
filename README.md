@@ -97,7 +97,7 @@ def normalize(img, mean, std):
 
 SSL4EO-S12-ML dataset is a large-scale multi-label land cover land use classification dataset derived from [SSL4EO-S12](https://arxiv.org/abs/2211.07044) images and [Dynamic World](https://www.nature.com/articles/s41597-022-01307-4) segmentation maps. It consists of 780,371 multispectral Sentinel-2 images with size 264×264, divided into 247,377 non-overlapping scenes each with 1-4 multi-seasonal patches. Each image has a multi-label annotation from one or more categories in 9 land cover land use classes.
 
-We provide labels corresponding to SSl4EO-S12 image IDs as a json file in HuggingFace (https://huggingface.co/datasets/wangyi111/SSL4EO-S12/tree/main/ssl4eo-s12-ml). Refer to SSL4EO-S12 for the images. Example:
+We provide labels corresponding to SSl4EO-S12 image IDs as a json file in [HuggingFace](https://huggingface.co/datasets/wangyi111/SSL4EO-S12/tree/main/ssl4eo-s12-ml). Refer to SSL4EO-S12 for the images. Example:
 
 ```python
 ...
