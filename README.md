@@ -93,5 +93,31 @@ def normalize(img, mean, std):
     return img
 ```
 
+## SSL4EO-S12-ML dataset
+
+SSL4EO-S12-ML dataset is a large-scale multi-label land cover land use classification dataset derived from [SSL4EO-S12](https://arxiv.org/abs/2211.07044) images and [Dynamic World](https://www.nature.com/articles/s41597-022-01307-4) segmentation maps. It consists of 780,371 multispectral Sentinel-2 images with size 264×264, divided into 247,377 non-overlapping scenes each with 1-4 multi-seasonal patches. Each image has a multi-label annotation from one or more categories in 9 land cover land use classes.
+
+We provide labels corresponding to SSl4EO-S12 image IDs as a json file in HuggingFace (https://huggingface.co/datasets/wangyi111/SSL4EO-S12/tree/main/ssl4eo-s12-ml). Refer to SSL4EO-S12 for the images. Example:
+
+```python
+...
+{"0000002": # SSL4EO-S12 location ID
+    {"20200718T102559_20200718T103605_T31TFJ": [], # season ID & multi-label (empty means no label for this scene)
+    "20201011T103031_20201011T103339_T31TFJ": [], 
+    "20210117T104259_20210117T104300_T31TFJ": ["0", "1", "2", "4", "5", "6", "8"], "20210402T104021_20210402T104258_T31TFJ": ["1", "2", "4", "5", "6", "8"]
+    }, 
+"0000003": 
+    {"20200403T100549_20200403T101937_T31PDQ": ["4", "5", "7"], 
+    "20200702T100559_20200702T101831_T31PDQ": ["4", "5", "7"], 
+    "20200930T100729_20200930T102207_T31PEQ": ["0", "1", "4", "5", "6", "7"], 
+    "20210103T101411_20210103T102025_T31PDQ": ["1", "4", "5", "7"]
+    },
+...
+}
+```
+
+## TODOs
+- [ ] Add instructions for SSL4EO-S12-ML data loading
+- [ ] Add instructions for pretraining and transfer learning
 
 ## Citation
