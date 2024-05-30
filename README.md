@@ -1,13 +1,17 @@
 # SoftCon
 Multi-label Guided Soft Contrastive Learning for Efficient Earth Observation Pretraining
 
-![alt text](assets/structure.png)
+<p align="center">
+  <img width=80% alt="SoftCon main structure" src="assets/structure.png">
+</p>
 
 SoftCon explores the potential of two free resources beyond pure satellite imagery for multispectral and SAR pretraining: land cover land use products (e.g. Dynamic World) to guide contrastive learning, and strong vision foundation models (e.g. DINO and DINOv2) for continual pretraining. Without prohibitive compute, SoftCon is able to produce small models with high-performance representations that beat many SOTA large models on a wide range of downstream tasks.
 
 
 
-![alt text](assets/be_results.png)
+<p align="center">
+  <img width=80% alt="Performance on BE" src="assets/be_results.png">
+</p>
 
 ## Pretrained models
 
