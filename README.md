@@ -1,16 +1,26 @@
 # SoftCon
 Multi-label Guided Soft Contrastive Learning for Efficient Earth Observation Pretraining
 
+![alt text](assets/structure.png)
+
+SoftCon explores the potential of two free resources beyond pure satellite imagery for multispectral and SAR pretraining: land cover land use products (e.g. Dynamic World) to guide contrastive learning, and strong vision foundation models (e.g. DINO and DINOv2) for continual pretraining. Without prohibitive compute, SoftCon is able to produce small models with high-performance representations that beat many SOTA large models on a wide range of downstream tasks.
+
+
+
+![alt text](assets/be_results.png)
+
 ## Pretrained models
 
 | Model | Modality | BigEarthNet-10% linear | EuroSAT linear | download |
 | :---: | :---: | :---: | :---: | :---: |
 | RN50 | MS | 84.8 | 98.6 | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B13_rn50_softcon.pth) |
 | ViT-S/14 | MS | 85.0 | 97.1 | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B13_vits14_softcon.pth) |
-| ViT-B/14 | MS | 86.8 | 98.0 | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B13_vitb14_softcon.pth) |
+| ViT-B/14 | MS | 86.8* | 98.0* | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B13_vitb14_softcon.pth) |
 | RN50 | SAR | 78.9 | 87.1 | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B2_rn50_softcon.pth) |
 | ViT-S/14 | SAR | 80.3 | 87.1 | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B2_vits14_softcon.pth) |
-| ViT-B/14 | SAR | 81.4 | 89.1 | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B2_vitb14_softcon.pth) |
+| ViT-B/14 | SAR | 82.5* | 89.1* | [backbone](https://huggingface.co/wangyi111/softcon/resolve/main/B2_vitb14_softcon.pth) |
+
+**: Linear head with 4 output layers, referring to [DINOv2](https://arxiv.org/abs/2304.07193) appendix B.3.*
 
 
 ## Usage
@@ -97,14 +107,15 @@ def normalize(img, mean, std):
 
 SSL4EO-S12-ML dataset is a large-scale multi-label land cover land use classification dataset derived from [SSL4EO-S12](https://arxiv.org/abs/2211.07044) images and [Dynamic World](https://www.nature.com/articles/s41597-022-01307-4) segmentation maps. It consists of 780,371 multispectral Sentinel-2 images with size 264×264, divided into 247,377 non-overlapping scenes each with 1-4 multi-seasonal patches. Each image has a multi-label annotation from one or more categories in 9 land cover land use classes.
 
-We provide labels corresponding to SSl4EO-S12 image IDs as a json file in [HuggingFace](https://huggingface.co/datasets/wangyi111/SSL4EO-S12/tree/main/ssl4eo-s12-ml). Refer to SSL4EO-S12 for the images. Example:
+We provide labels corresponding to SSl4EO-S12 image IDs as a json file in [HuggingFace](https://huggingface.co/datasets/wangyi111/SSL4EO-S12/tree/main/ssl4eo-s12-ml). The structure is shown as the following example:
 
 ```python
 ...
 {"0000002": # SSL4EO-S12 location ID
     {"20200718T102559_20200718T103605_T31TFJ": [], # season ID & multi-label (empty means no label for this scene)
     "20201011T103031_20201011T103339_T31TFJ": [], 
-    "20210117T104259_20210117T104300_T31TFJ": ["0", "1", "2", "4", "5", "6", "8"], "20210402T104021_20210402T104258_T31TFJ": ["1", "2", "4", "5", "6", "8"]
+    "20210117T104259_20210117T104300_T31TFJ": ["0", "1", "2", "4", "5", "6", "8"], 
+    "20210402T104021_20210402T104258_T31TFJ": ["1", "2", "4", "5", "6", "8"]
     }, 
 "0000003": 
     {"20200403T100549_20200403T101937_T31PDQ": ["4", "5", "7"], 
