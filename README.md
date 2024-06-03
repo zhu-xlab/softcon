@@ -5,7 +5,7 @@ Multi-label Guided Soft Contrastive Learning for Efficient Earth Observation Pre
   <img width=80% alt="SoftCon main structure" src="assets/structure.png">
 </p>
 
-SoftCon explores the potential of two free resources beyond pure satellite imagery for multispectral and SAR pretraining: land cover land use products (e.g. Dynamic World) to guide contrastive learning, and strong vision foundation models (e.g. DINO and DINOv2) for continual pretraining. Without prohibitive compute, SoftCon is able to produce small models with high-performance representations that beat many SOTA large models on a wide range of downstream tasks.
+[SoftCon](https://arxiv.org/abs/2405.20462) explores the potential of two free resources beyond pure satellite imagery for multispectral and SAR pretraining: land cover land use products (e.g. Dynamic World) to guide contrastive learning, and strong vision foundation models (e.g. DINO and DINOv2) for continual pretraining. Without prohibitive compute, SoftCon is able to produce small models with high-performance representations that beat many SOTA large models on a wide range of downstream tasks.
 
 
 
@@ -134,5 +134,15 @@ We provide labels corresponding to SSl4EO-S12 image IDs as a json file in [Huggi
 ## TODOs
 - [ ] Add instructions for SSL4EO-S12-ML data loading
 - [ ] Add instructions for pretraining and transfer learning
+- [ ] Add models to torchgeo
 
 ## Citation
+
+```bibtex
+@misc{wang2024multilabel,
+      title={Multi-Label Guided Soft Contrastive Learning for Efficient Earth Observation Pretraining}, 
+      author={Wang, Yi and Albrecht, Conrad M and Zhu, Xiao Xiang},
+      journal={arXiv preprint arXiv:2405.20462},
+      year={2024}
+}
+```
